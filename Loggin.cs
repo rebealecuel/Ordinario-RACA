@@ -19,9 +19,22 @@ namespace Ordinario_RACA
 
         private void Loggin_Load(object sender, EventArgs e)
         {
-            Usuarios u = new Usuarios();
+ 
+        }
 
-            
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            Usuarios u = new Usuarios(txbUser.Text, txbPassword.Text);
+            if (true)
+            {
+                Form form = new Form();
+                form.Visible = true;
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Error critico");
+            }
         }
     }
 }

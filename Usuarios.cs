@@ -10,7 +10,7 @@ namespace Ordinario_RACA
     {
         List<Usuarios> usuarios = new List<Usuarios>();
         {
-            new Usuarios ("")
+            new Usuarios ("Rebe", "111")
         };
     }
 }
