@@ -8,6 +8,6 @@ namespace Ordinario_RACA
 {
     internal interface IAcciones
     {
-        List<Auto>
+        List<Auto> ObtenerAuto();
     }
 }
