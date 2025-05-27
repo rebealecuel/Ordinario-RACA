@@ -8,21 +8,16 @@ namespace Ordinario_RACA
 {
     internal class Usuarios
     {
-        List<Usuarios> usuarios = new List<Usuarios>()
+        private static List<Usuarios> usuario = new List<Usuarios>()
         {
-            new Usuarios ("Rebe", "111")
+            new Usuarios{User = "Rebe", Password = "1111"},
+            new Usuarios{User = "Ale", Password = "3333"},
+            new Usuarios{User = "Angel", Password = "2469"}
         };
 
         public List<Usuarios> Getusuarios()
         { 
-            try
-            {
-                return usuarios;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return usuario;
         }
 
         public Usuarios(string user, string password)
@@ -30,6 +25,8 @@ namespace Ordinario_RACA
             User = user;
             Password = password;
         }
+
+        public Usuarios() { }
 
         public string User {  get; set; }
         public string Password { get; set; }
