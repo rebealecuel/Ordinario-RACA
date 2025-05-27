@@ -14,21 +14,21 @@ namespace Ordinario_RACA
             new Auto (1,"Chebrolet","Onix",2020,"negro",100000,"Disponible")
         };
 
-        Correo correo = new Correo ();
+        Correo correo = new Correo();
 
         public List<Auto> ObtenerAuto()
         {
-            try 
+            try
             {
                 return listaautos;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 correo.EnviarCorreo(ex.ToString());
                 throw;
             }
         }
-        public bool Actualizar (int iD, string marca, string modelo, int año, string color, double precio, string estado)
+        public bool Actualizar(int iD, string marca, string modelo, int año, string color, double precio, string estado)
         {
             try
             {
@@ -42,9 +42,9 @@ namespace Ordinario_RACA
                 }
                 return false;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                correo.EnviarCorreo (ex.ToString());
+                correo.EnviarCorreo(ex.ToString());
                 return false;
             }
         }
@@ -83,23 +83,61 @@ namespace Ordinario_RACA
                 }
                 return true;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 correo.EnviarCorreo(ex.ToString());
-                return false; 
-            }    
+                return false;
+            }
         }
         public bool Importar()
         {
-            try 
+            try
             {
                 var downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
                 var filePath = Path.Combine(downloadsPath, "Autos_Importados.x1xs");
 
                 if (!File.Exists(filePath))
                 {
-
+                    return false;
                 }
+                using (var workbook = new XlWorkbook())
+                {
+                    var worksheet = workbook.Worksheets("Sheet1");
+                    var rows = worksheet.RowsUsed().Skip(1);
+
+                    foreach (var row in rows)
+                    {
+                        int id = int.Parse(row.Cell(1).GetValue<string>());
+                        string marca = row.Cell(2).GetValue<string>();
+                        string modelo = row.Cell(3).GetValue<string>();
+                        int año = int.Parse(row.Cell(4).GetValue<string>());
+                        string color = row.Cell(5).GetValue<string>();
+                        double precio = double.Parse(row.Cell(6).GetValue<string>());
+                        string estado = row.Cell(7).GetValue<string>();
+
+                        listaautos.Add(new Auto(id, marca, modelo, año, color, precio, estado));
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                correo.EnviarCorreo(ex.ToString());
+                return false;
+            }
+        }
+
+        public bool Agregar(int iD2, string marca2, string modelo2, int año2, string color2, double precio2, string estado2)
+        {
+            try
+            {
+                listaautos.Add(new Auto(iD2, marca2, modelo2, año2, color2, precio2, estado2));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                correo.EnviarCorreo(ex.ToString());
+                return false;
             }
         }
     }

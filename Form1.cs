@@ -20,7 +20,7 @@ namespace Ordinario_RACA
 
         private void btnMostrar_Click(object sender, EventArgs e)
         {
-            DataAutos.DataSource = acc.ObtenerAuto();
+            DGVMostrar.DataSource = acc.ObtenerAuto();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -41,6 +41,32 @@ namespace Ordinario_RACA
         private void btn_Limpiar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Exportar_Click(object sender, EventArgs e)
+        {
+            if (acc.ExportarExcel())
+            {
+                MessageBox.Show("Exportado con exito");
+                DGVMostrar.DataSource = null;
+            }
+            else
+            {
+                MessageBox.Show("Fallo catastrofico");
+            }
+        }
+
+        private void btn_Importar_Click(object sender, EventArgs e)
+        {
+            if (acc.Importar())
+            {
+                MessageBox.Show("Importando");
+                DGVMostrar.DataSource=null;
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
         }
     }
 }

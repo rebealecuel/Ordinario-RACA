@@ -46,6 +46,8 @@
             this.lblEstado = new System.Windows.Forms.Label();
             this.txbEstado = new System.Windows.Forms.TextBox();
             this.btn_Limpiar = new System.Windows.Forms.Button();
+            this.btn_Exportar = new System.Windows.Forms.Button();
+            this.btn_Importar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVMostrar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -203,11 +205,33 @@
             this.btn_Limpiar.UseVisualStyleBackColor = true;
             this.btn_Limpiar.Click += new System.EventHandler(this.btn_Limpiar_Click);
             // 
+            // btn_Exportar
+            // 
+            this.btn_Exportar.Location = new System.Drawing.Point(232, 196);
+            this.btn_Exportar.Name = "btn_Exportar";
+            this.btn_Exportar.Size = new System.Drawing.Size(98, 36);
+            this.btn_Exportar.TabIndex = 18;
+            this.btn_Exportar.Text = "Exportar";
+            this.btn_Exportar.UseVisualStyleBackColor = true;
+            this.btn_Exportar.Click += new System.EventHandler(this.btn_Exportar_Click);
+            // 
+            // btn_Importar
+            // 
+            this.btn_Importar.Location = new System.Drawing.Point(349, 196);
+            this.btn_Importar.Name = "btn_Importar";
+            this.btn_Importar.Size = new System.Drawing.Size(98, 36);
+            this.btn_Importar.TabIndex = 19;
+            this.btn_Importar.Text = "Importar";
+            this.btn_Importar.UseVisualStyleBackColor = true;
+            this.btn_Importar.Click += new System.EventHandler(this.btn_Importar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_Importar);
+            this.Controls.Add(this.btn_Exportar);
             this.Controls.Add(this.btn_Limpiar);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.txbEstado);
@@ -254,6 +278,8 @@
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.TextBox txbEstado;
         private System.Windows.Forms.Button btn_Limpiar;
+        private System.Windows.Forms.Button btn_Exportar;
+        private System.Windows.Forms.Button btn_Importar;
     }
 }
 
